@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  generation: 1
+  labels:
+    app: ${service_name}
+  name: ${service_name}
+  namespace: ${k8s_namespace}
+spec:
+  endpoints:
+  - port: metrics
+    scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+    - ${k8s_namespace}
+  selector:
+    matchLabels:
+      app: ${service_name}

@@ -1,0 +1,34 @@
+global:
+    pspEnabled: true
+
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+  tls:
+    enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+kubeDns:
+  enabled: false
+
+kubeApiServer:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+
+  admin:
+    existingSecret: grafana-admin-secret
+    userKey: admin-user
+    passwordKey: admin-password
+
+  forceDeployDashboards: true

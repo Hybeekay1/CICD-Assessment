@@ -1,0 +1,27 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://otel-collector.monitoring.svc.cluster.local:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: '1'
+  java:
+    env:
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp_proto_http
+      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
+        value: 'true'
+      - name: OTEL_JMX_TARGET_SYSTEM
+        value: jvm
+      - name: OTEL_METRICS_EXPORTER
+        value: prometheus
+      - name: OTEL_EXPORTER_PROMETHEUS_PORT
+        value: '9464'
+      - name: OTEL_SERVICE_NAME
+        value: ${service_name}
