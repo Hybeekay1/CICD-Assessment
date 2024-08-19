@@ -7,7 +7,7 @@ spec:
   selector:
     {{- include "app-helm-files.selectorLabels" . | nindent 4 }}
   ports:
-    - name: metric
+    - name: metrics
       port: 9464
       targetPort: 9464
   
