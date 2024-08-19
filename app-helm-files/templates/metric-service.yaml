@@ -4,11 +4,10 @@ metadata:
   name: {{ .Release.Name }}-metrics
 spec:
   type: ClusterIP
-  selector:
-    {{- include "app-helm-files.selectorLabels" . | nindent 4 }}
   ports:
     - name: metrics
       port: 9464
       targetPort: 9464
-  
+  selector:
+    {{- include "app-helm-files.selectorLabels" . | nindent 4 }}
      
