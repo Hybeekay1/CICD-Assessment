@@ -15,7 +15,7 @@ spec:
     metadata:
       {{- with .Values.podAnnotations }}
       annotations:
-        instrumentation.opentelemetry.io/inject-python: "true"
+        instrumentation.opentelemetry.io/inject-python: "monitoring/demo-instrumentation"
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
